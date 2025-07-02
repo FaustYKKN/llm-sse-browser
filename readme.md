@@ -42,17 +42,17 @@ Internal parser used by `streamLLM`.
 
 Other languages: [中文](readme_zh.md) | [日本語](readme_ja.md) | [Русский](readme_ru.md)
 
-## Demo
+## Docs
 
-A small example project is provided in the `demo` directory. It contains a Node.js
+A small documentation site lives in the `docs` directory. It bundles a Node.js
 server exposing a `/chat` SSE endpoint and a React + TypeScript frontend built
-with Vite and Ant Design. The frontend showcases several examples for consuming
-LLM streams.
+with Vite and Ant Design. The frontend demonstrates how to consume LLM streams.
 
 ```bash
-cd demo
+cd docs
+
 npm install
 npm run dev
 ```
 
-Open `http://localhost:3000` in your browser to try the examples.
+Open `http://localhost:3000` in your browser to explore the docs and examples.
