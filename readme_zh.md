@@ -24,6 +24,10 @@ streamLLM('/api/chat', {
 });
 ```
 
+如果在 Node.js 环境中使用，确保你的项目将 `*.js` 文件视作 ES 模块
+（例如在 `package.json` 中加入 `"type": "module"`），或者通过动态
+`import()` 加载。
+
 ## API 说明
 
 ### `streamLLM(url, fetchOptions, handlers)`

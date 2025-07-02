@@ -25,6 +25,10 @@ streamLLM('/api/chat', {
 });
 ```
 
+Ensure your project treats `*.js` files as ES modules (for example by adding
+`"type": "module"` to `package.json`) or use dynamic `import()` when running
+under Node.js.
+
 ## API
 
 ### streamLLM(url, fetchOptions, handlers)
@@ -46,11 +50,10 @@ with Vite and Ant Design. The frontend showcases several examples for consuming
 LLM streams.
 
 ```bash
-# run backend
-node demo/server.js
-
-# in another terminal run the frontend
-cd demo/client && npm run dev
+cd demo
+npm install
+npm run dev
 ```
 
-Open `http://localhost:5173` in your browser to try the examples.
+Open `http://localhost:3000` in your browser to try the examples.
+

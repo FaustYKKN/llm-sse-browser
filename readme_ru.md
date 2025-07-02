@@ -24,6 +24,9 @@ streamLLM('/api/chat', {
 });
 ```
 
+Если вы используете Node.js, добавьте в `package.json` поле `"type": "module"`
+или подключайте модуль с помощью динамического `import()`.
+
 ## Документация API
 
 ### `streamLLM(url, fetchOptions, handlers)`

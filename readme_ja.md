@@ -24,6 +24,8 @@ streamLLM('/api/chat', {
 });
 ```
 
+Node.js で利用する場合は、`package.json` に `"type": "module"` を追加して
+`*.js` を ES モジュールとして扱うか、動的な `import()` を使用してください。
 ## API ドキュメント
 
 ### `streamLLM(url, fetchOptions, handlers)`
