@@ -50,6 +50,7 @@ with Vite and Ant Design. The frontend demonstrates how to consume LLM streams.
 
 ```bash
 cd docs
+
 npm install
 npm run dev
 ```
