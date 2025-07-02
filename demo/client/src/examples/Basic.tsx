@@ -2,6 +2,7 @@ import { Button, Card } from 'antd';
 import React, { useRef } from 'react';
 import { streamLLM, Typewriter } from '../../../../src/llmStream.js';
 
+
 export default function Basic() {
   const ref = useRef<HTMLDivElement>(null);
 
