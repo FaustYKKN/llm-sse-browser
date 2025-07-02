@@ -1,6 +1,6 @@
 import { Button, Card, Space } from 'antd';
 import React, { useRef } from 'react';
-import { streamLLM, Typewriter } from '../../../src/llmStream.js';
+import { streamLLM, Typewriter } from '../../../../src/llmStream.js';
 
 export default function MultiCall() {
   const ref1 = useRef<HTMLDivElement>(null);

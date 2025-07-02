@@ -1,6 +1,6 @@
 import { Button, Card } from 'antd';
 import React, { useRef } from 'react';
-import { streamLLM, Typewriter } from '../../../src/llmStream.js';
+import { streamLLM, Typewriter } from '../../../../src/llmStream.js';
 
 export default function CustomSpeed() {
   const ref = useRef<HTMLDivElement>(null);
