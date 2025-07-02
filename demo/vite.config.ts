@@ -1,12 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
 export default defineConfig({
-  server: {
-    port: 5173,
-    proxy: {
-      '/chat': 'http://localhost:3000'
-    }
+  root: resolve(__dirname, 'client'),
+  build: {
+    outDir: resolve(__dirname, 'client/dist')
   },
   plugins: [react()]
 });
