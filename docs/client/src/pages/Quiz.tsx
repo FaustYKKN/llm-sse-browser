@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography, Radio, Button } from 'antd';
 
 interface Question {
@@ -8,24 +8,25 @@ interface Question {
   answer: string;
 }
 
-const questions: Question[] = [
-  {
-    id: 1,
-    question: 'What is 2 + 2?',
-    options: { A: '2', B: '3', C: '4', D: '5' },
-    answer: 'C'
-  },
-  {
-    id: 2,
-    question: 'Capital of France?',
-    options: { A: 'Berlin', B: 'London', C: 'Paris', D: 'Rome' },
-    answer: 'C'
-  }
-];
-
 export default function Quiz() {
+  const [questions, setQuestions] = useState<Question[]>([]);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [score, setScore] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch('/api/questions')
+      .then(res => res.json())
+      .then(rows =>
+        setQuestions(
+          rows.map((r: any) => ({
+            id: r.id,
+            question: r.question,
+            options: { A: r.A, B: r.B, C: r.C, D: r.D },
+            answer: r.answer,
+          }))
+        )
+      );
+  }, []);
 
   const submit = () => {
     let sc = 0;
@@ -57,7 +58,9 @@ export default function Quiz() {
         Submit
       </Button>
       {score !== null && (
-        <Typography.Paragraph>Your score: {score} / {questions.length}</Typography.Paragraph>
+        <Typography.Paragraph>
+          Your score: {score} / {questions.length}
+        </Typography.Paragraph>
       )}
     </>
   );

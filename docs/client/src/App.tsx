@@ -46,7 +46,6 @@ function Shell() {
                 <Route path="/examples" element={<Examples dark={dark} />} />
                 <Route path="/quiz" element={<Quiz />} />
                 <Route path="/bank" element={<QuestionBank />} />
-
               </Routes>
             </Content>
           </Layout>
