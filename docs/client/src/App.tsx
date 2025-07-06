@@ -3,6 +3,8 @@ import { ConfigProvider, Layout, Menu, Switch, theme, Anchor } from 'antd';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Examples from './pages/Examples';
+import Quiz from './pages/Quiz';
+import QuestionBank from './pages/QuestionBank';
 
 const { Header, Sider, Content } = Layout;
 
@@ -31,7 +33,9 @@ function Shell() {
               onClick={e => navigate(e.key)}
               items={[
                 { label: 'Home', key: '/' },
-                { label: 'Examples', key: '/examples' }
+                { label: 'Examples', key: '/examples' },
+                { label: 'Quiz', key: '/quiz' },
+                { label: 'Question Bank', key: '/bank' }
               ]}
             />
           </Sider>
@@ -40,6 +44,9 @@ function Shell() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/examples" element={<Examples dark={dark} />} />
+                <Route path="/quiz" element={<Quiz />} />
+                <Route path="/bank" element={<QuestionBank />} />
+
               </Routes>
             </Content>
           </Layout>

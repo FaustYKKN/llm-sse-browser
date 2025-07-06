@@ -15,7 +15,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.17.0",
     "@monaco-editor/react": "^4.4.6",
-    "monaco-editor": "^0.45.0"
+    "monaco-editor": "^0.45.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",
