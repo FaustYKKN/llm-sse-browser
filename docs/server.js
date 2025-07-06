@@ -45,7 +45,6 @@ async function start() {
       }
     }, 400);
   });
-
   app.get('/api/questions', (req, res) => {
     db.all('SELECT * FROM questions', (err, rows) => {
       if (err) return res.status(500).json({ error: err.message });
