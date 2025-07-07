@@ -109,7 +109,7 @@ async function start() {
   });
 
   const vite = await createViteServer({
-    root: path.resolve(__dirname, 'client'),
+    configFile: path.resolve(__dirname, 'vite.config.ts'),
     server: { middlewareMode: 'html' },
   });
 
