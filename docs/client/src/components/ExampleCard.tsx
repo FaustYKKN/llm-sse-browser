@@ -12,8 +12,8 @@ export default function ExampleCard({ children, code, language = 'typescript' }:
 
   return (
     <>
-      {/* Light background for readability */}
-      <Card style={{ marginBottom: 24, background: '#f5f5f5', color: '#000' }}>
+      {/* Dark background for unified white text */}
+      <Card style={{ marginBottom: 24, background: '#001529', color: '#fff' }}>
       {children}
       <div style={{ textAlign: 'right', marginTop: 16 }}>
         <Button type="link" icon={<CodeOutlined />} onClick={() => setOpen(!open)}>

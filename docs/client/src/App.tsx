@@ -47,8 +47,8 @@ function Shell() {
                 <Home />
               ) : (
                 <>
-                  {/* Use light background for content pages */}
-                  <Card style={{ background: '#fff', color: '#000' }}>
+                  {/* Use dark background for content pages */}
+                  <Card style={{ background: '#001529', color: '#fff' }}>
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/examples" element={<Examples />} />
