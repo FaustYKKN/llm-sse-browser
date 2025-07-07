@@ -55,7 +55,7 @@ export default function QuestionBank() {
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.aoa_to_sheet([
       ['Question', 'A', 'B', 'C', 'D', 'Answer'],
-      ['What is 2+2?', '1', '2', '3', '4', 'C']
+      ['谁是今天最帅的 boy?', '吴彦祖', '彭于晏', '金城武', '杨东磊', 'D']
     ]);
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     const blob = new Blob([XLSX.write(wb, { bookType: 'xlsx', type: 'array' })], {
@@ -87,18 +87,18 @@ export default function QuestionBank() {
   };
 
   const columns = [
-    { title: 'Question', dataIndex: 'question' },
+    { title: '问题', dataIndex: 'question' },
     { title: 'A', dataIndex: 'A' },
     { title: 'B', dataIndex: 'B' },
     { title: 'C', dataIndex: 'C' },
     { title: 'D', dataIndex: 'D' },
-    { title: 'Answer', dataIndex: 'answer' },
+    { title: '答案', dataIndex: 'answer' },
     {
-      title: 'Action',
+      title: '操作',
       render: (_: any, record: Row) => (
         <>
-          <Button size="small" onClick={() => setEditing(record)}>Edit</Button>
-          <Button size="small" danger onClick={() => remove(record.key)} style={{ marginLeft: 8 }}>Delete</Button>
+          <Button size="small" onClick={() => setEditing(record)}>编辑</Button>
+          <Button size="small" danger onClick={() => remove(record.key)} style={{ marginLeft: 8 }}>删除</Button>
         </>
       )
     }
@@ -106,21 +106,21 @@ export default function QuestionBank() {
 
   return (
     <>
-      <Typography.Title level={2}>Question Bank</Typography.Title>
+      <Typography.Title level={2}>题库</Typography.Title>
       <Upload beforeUpload={beforeUpload} showUploadList={false} accept=".xlsx">
-        <Button type="primary">Upload Excel</Button>
+        <Button type="primary">上传 Excel</Button>
       </Upload>
-      <Button onClick={downloadTemplate} style={{ marginLeft: 16 }}>Download Template</Button>
+      <Button onClick={downloadTemplate} style={{ marginLeft: 16 }}>下载模板</Button>
       <Table columns={columns} dataSource={data} style={{ marginTop: 24 }} pagination={false} />
-      <Modal open={!!editing} onOk={saveEdit} onCancel={() => setEditing(null)} title="Edit">
+      <Modal open={!!editing} onOk={saveEdit} onCancel={() => setEditing(null)} title="编辑">
         {editing && (
           <div style={{ display: 'grid', gap: 8 }}>
-            <Input value={editing.question} onChange={e => setEditing({ ...editing, question: e.target.value })} placeholder="Question" />
+            <Input value={editing.question} onChange={e => setEditing({ ...editing, question: e.target.value })} placeholder="问题" />
             <Input value={editing.A} onChange={e => setEditing({ ...editing, A: e.target.value })} placeholder="A" />
             <Input value={editing.B} onChange={e => setEditing({ ...editing, B: e.target.value })} placeholder="B" />
             <Input value={editing.C} onChange={e => setEditing({ ...editing, C: e.target.value })} placeholder="C" />
             <Input value={editing.D} onChange={e => setEditing({ ...editing, D: e.target.value })} placeholder="D" />
-            <Input value={editing.answer} onChange={e => setEditing({ ...editing, answer: e.target.value })} placeholder="Answer" />
+            <Input value={editing.answer} onChange={e => setEditing({ ...editing, answer: e.target.value })} placeholder="答案" />
           </div>
         )}
       </Modal>

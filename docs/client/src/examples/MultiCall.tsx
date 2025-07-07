@@ -27,8 +27,8 @@ export default function MultiCall({ dark = false }: { dark?: boolean }) {
   return (
     <>
       <Space>
-        <Button onClick={() => run(ref1, 'First message streaming')}>Call 1</Button>
-        <Button onClick={() => run(ref2, 'Second message streaming')}>Call 2</Button>
+        <Button onClick={() => run(ref1, 'First message streaming')}>调用 1</Button>
+        <Button onClick={() => run(ref2, 'Second message streaming')}>调用 2</Button>
       </Space>
       <div ref={ref1} style={{ marginTop: 16, minHeight: 24 }}></div>
       <div ref={ref2} style={{ marginTop: 16, minHeight: 24 }}></div>
@@ -57,8 +57,8 @@ export default function MultiCall({ dark = false }: { dark?: boolean }) {
   return (
     <ExampleCard code={code} language="tsx" dark={dark}>
       <Space>
-        <Button onClick={() => run(ref1, 'First message streaming')}>Call 1</Button>
-        <Button onClick={() => run(ref2, 'Second message streaming')}>Call 2</Button>
+        <Button onClick={() => run(ref1, 'First message streaming')}>调用 1</Button>
+        <Button onClick={() => run(ref2, 'Second message streaming')}>调用 2</Button>
       </Space>
       <div ref={ref1} style={{ marginTop: 16, minHeight: 24 }}></div>
       <div ref={ref2} style={{ marginTop: 16, minHeight: 24 }}></div>
