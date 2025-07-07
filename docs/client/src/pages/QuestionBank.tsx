@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, Upload, Button, Table, Modal, Input } from 'antd';
 import * as XLSX from 'xlsx';
+import { basePath } from '../config';
 
 interface Row {
   key: number;
@@ -17,7 +18,7 @@ export default function QuestionBank() {
   const [editing, setEditing] = useState<Row | null>(null);
 
   const load = () => {
-    fetch('/api/questions')
+    fetch(`${basePath}/api/questions`)
       .then(res => res.json())
       .then(rows => setData(rows.map((r: any) => ({ key: r.id, ...r }))));
   };
@@ -40,7 +41,7 @@ export default function QuestionBank() {
         D: r[4],
         answer: r[5]
       }));
-      await fetch('/api/questions', {
+      await fetch(`${basePath}/api/questions`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ questions: rows })
@@ -70,14 +71,14 @@ export default function QuestionBank() {
   };
 
   const remove = async (id: number) => {
-    await fetch(`/api/questions/${id}`, { method: 'DELETE' });
+    await fetch(`${basePath}/api/questions/${id}`, { method: 'DELETE' });
     load();
   };
 
   const saveEdit = async () => {
     if (!editing) return;
     const { key, ...payload } = editing;
-    await fetch(`/api/questions/${key}`, {
+    await fetch(`${basePath}/api/questions/${key}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

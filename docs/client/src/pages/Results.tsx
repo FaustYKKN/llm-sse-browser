@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Typography, Table } from 'antd';
+import { basePath } from '../config';
 
 interface Result {
   id: number;
@@ -12,7 +13,7 @@ export default function Results() {
   const [data, setData] = useState<Result[]>([]);
 
   useEffect(() => {
-    fetch('/api/results')
+    fetch(`${basePath}/api/results`)
       .then(res => res.json())
       .then(rows => setData(rows));
   }, []);

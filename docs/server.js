@@ -4,6 +4,7 @@ const { createServer: createViteServer } = require('vite');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const dbFile = path.resolve(__dirname, 'questions.db');
+const basePath = '/lovework';
 
 async function start() {
   const app = express();
@@ -29,7 +30,7 @@ async function start() {
     )`);
   });
 
-  app.post('/chat', (req, res) => {
+  app.post(`${basePath}/chat`, (req, res) => {
     res.set({
       'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache',
@@ -51,14 +52,14 @@ async function start() {
       }
     }, 400);
   });
-  app.get('/api/questions', (req, res) => {
+  app.get(`${basePath}/api/questions`, (req, res) => {
     db.all('SELECT * FROM questions', (err, rows) => {
       if (err) return res.status(500).json({ error: err.message });
       res.json(rows);
     });
   });
 
-  app.post('/api/questions', (req, res) => {
+  app.post(`${basePath}/api/questions`, (req, res) => {
     const qs = req.body.questions || [];
     const stmt = db.prepare('INSERT INTO questions(question,A,B,C,D,answer) VALUES (?,?,?,?,?,?)');
     db.serialize(() => {
@@ -72,7 +73,7 @@ async function start() {
     });
   });
 
-  app.put('/api/questions/:id', (req, res) => {
+  app.put(`${basePath}/api/questions/:id`, (req, res) => {
     const id = req.params.id;
     const q = req.body;
     db.run(
@@ -85,21 +86,21 @@ async function start() {
     );
   });
 
-  app.delete('/api/questions/:id', (req, res) => {
+  app.delete(`${basePath}/api/questions/:id`, (req, res) => {
     db.run('DELETE FROM questions WHERE id=?', req.params.id, function (err) {
       if (err) return res.status(500).json({ error: err.message });
       res.json({ ok: true });
     });
   });
 
-  app.get('/api/results', (req, res) => {
+  app.get(`${basePath}/api/results`, (req, res) => {
     db.all('SELECT * FROM results ORDER BY id DESC', (err, rows) => {
       if (err) return res.status(500).json({ error: err.message });
       res.json(rows);
     });
   });
 
-  app.post('/api/results', (req, res) => {
+  app.post(`${basePath}/api/results`, (req, res) => {
     const { score, total } = req.body;
     db.run('INSERT INTO results(score,total) VALUES(?,?)', [score, total], function (err) {
       if (err) return res.status(500).json({ error: err.message });
@@ -112,7 +113,7 @@ async function start() {
     server: { middlewareMode: 'html' },
   });
 
-  app.use(vite.middlewares);
+  app.use(basePath, vite.middlewares);
 
   const port = 3000;
   app.listen(port, () => {

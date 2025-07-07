@@ -1,6 +1,7 @@
 import React from 'react';
 import { ConfigProvider, Layout, Menu, theme, Anchor, Card, BackTop } from 'antd';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { basePath } from './config';
 import Home from './pages/Home';
 import Examples from './pages/Examples';
 import Quiz from './pages/Quiz';
@@ -77,7 +78,7 @@ function Shell() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basePath}>
       <Shell />
     </BrowserRouter>
   );

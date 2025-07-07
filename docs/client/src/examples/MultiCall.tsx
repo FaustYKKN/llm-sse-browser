@@ -2,6 +2,7 @@ import { Button, Space } from 'antd';
 import React, { useRef } from 'react';
 import { streamLLM, Typewriter } from '../../../../src/llmStream.js';
 import ExampleCard from '../components/ExampleCard';
+import { basePath } from '../config';
 
 const code = `import { Button, Space } from 'antd';
 import React, { useRef } from 'react';
@@ -15,7 +16,7 @@ export default function MultiCall() {
     if (!ref.current) return;
     ref.current.textContent = '';
     const writer = new Typewriter(ref.current, 20);
-    streamLLM('/chat', {
+    streamLLM('/lovework/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ prompt })
@@ -45,7 +46,7 @@ export default function MultiCall() {
     if (!ref.current) return;
     ref.current.textContent = '';
     const writer = new Typewriter(ref.current, 20);
-    streamLLM('/chat', {
+    streamLLM(`${basePath}/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ prompt })
