@@ -7,7 +7,7 @@ const code = `import { Button } from 'antd';
 import React, { useRef } from 'react';
 import { streamLLM, Typewriter } from '../../../../src/llmStream.js';
 
-export default function Basic({ dark = false }: { dark?: boolean }) {
+export default function Basic() {
   const ref = useRef<HTMLDivElement>(null);
 
   const onClick = () => {
@@ -32,7 +32,7 @@ export default function Basic({ dark = false }: { dark?: boolean }) {
 }
 `;
 
-export default function Basic({ dark = false }: { dark?: boolean }) {
+export default function Basic() {
   const ref = useRef<HTMLDivElement>(null);
 
   const onClick = () => {
@@ -49,7 +49,7 @@ export default function Basic({ dark = false }: { dark?: boolean }) {
   };
 
   return (
-    <ExampleCard code={code} language="tsx" dark={dark}>
+    <ExampleCard code={code} language="tsx">
       <Button type="primary" onClick={onClick}>开始</Button>
       <div ref={ref} style={{ marginTop: 16, minHeight: 24 }}></div>
     </ExampleCard>

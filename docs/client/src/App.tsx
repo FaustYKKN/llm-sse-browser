@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ConfigProvider, Layout, Menu, Switch, theme, Anchor, Card } from 'antd';
+import React from 'react';
+import { ConfigProvider, Layout, Menu, theme, Anchor, Card } from 'antd';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Examples from './pages/Examples';
@@ -9,7 +9,6 @@ import QuestionBank from './pages/QuestionBank';
 const { Header, Sider, Content } = Layout;
 
 function Shell() {
-  const [dark, setDark] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { token } = theme.useToken();
@@ -21,15 +20,14 @@ function Shell() {
   ] : [];
 
   return (
-    <ConfigProvider theme={{ algorithm: dark ? theme.darkAlgorithm : theme.defaultAlgorithm }}>
+    <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
       <Layout style={{ minHeight: '100vh' }}>
         <Header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span style={{ color: '#fff', fontSize: 18 }}>LLM SSE 文档</span>
-          <Switch checked={dark} onChange={setDark} checkedChildren="🌙" unCheckedChildren="☀️" />
         </Header>
         <Layout>
           {!isHome && (
-            <Sider width={200} theme={dark ? 'dark' : 'light'}>
+            <Sider width={200} theme="dark">
               <Menu
                 mode="inline"
                 selectedKeys={[location.pathname]}
@@ -51,7 +49,7 @@ function Shell() {
                 <Card style={{ background: token.colorBgContainer }}>
                   <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/examples" element={<Examples dark={dark} />} />
+                    <Route path="/examples" element={<Examples />} />
                     <Route path="/quiz" element={<Quiz />} />
                     <Route path="/bank" element={<QuestionBank />} />
                   </Routes>
@@ -60,7 +58,7 @@ function Shell() {
             </Content>
           </Layout>
           {anchorItems.length > 0 && !isHome && (
-            <Sider width={200} theme={dark ? 'dark' : 'light'} style={{ padding: '16px 0' }}>
+            <Sider width={200} theme="dark" style={{ padding: '16px 0' }}>
               <Anchor items={anchorItems} />
             </Sider>
           )}

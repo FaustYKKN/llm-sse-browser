@@ -5,7 +5,7 @@ import Editor from '@monaco-editor/react';
 import 'monaco-editor/min/vs/editor/editor.main.css';
 import { theme } from 'antd';
 
-export default function ExampleCard({ children, code, language = 'typescript', dark = false }: { children: React.ReactNode; code: string; language?: string; dark?: boolean }) {
+export default function ExampleCard({ children, code, language = 'typescript' }: { children: React.ReactNode; code: string; language?: string }) {
   const [open, setOpen] = useState(false);
   const copy = () => navigator.clipboard.writeText(code);
   const { token } = theme.useToken();
@@ -26,7 +26,7 @@ export default function ExampleCard({ children, code, language = 'typescript', d
           <Editor
             height="200px"
             language={language}
-            theme={dark ? 'vs-dark' : 'vs'}
+            theme="vs-dark"
             value={code}
             options={{ readOnly: true, minimap: { enabled: false }, scrollBeyondLastLine: false }}
           />
