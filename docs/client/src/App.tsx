@@ -1,5 +1,5 @@
 import React from 'react';
-import { ConfigProvider, Layout, Menu, theme, Anchor, Card } from 'antd';
+import { ConfigProvider, Layout, Menu, theme, Anchor, Card, BackTop } from 'antd';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Examples from './pages/Examples';
@@ -66,6 +66,7 @@ function Shell() {
             </Sider>
           )}
         </Layout>
+        <BackTop />
       </Layout>
     </ConfigProvider>
   );
