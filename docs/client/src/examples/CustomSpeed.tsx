@@ -25,7 +25,7 @@ export default function CustomSpeed({ dark = false }: { dark?: boolean }) {
 
   return (
     <>
-      <Button onClick={onClick}>Start Fast</Button>
+      <Button onClick={onClick}>快速开始</Button>
       <div ref={ref} style={{ marginTop: 16, minHeight: 24 }}></div>
     </>
   );
@@ -50,7 +50,7 @@ export default function CustomSpeed({ dark = false }: { dark?: boolean }) {
 
   return (
     <ExampleCard code={code} language="tsx" dark={dark}>
-      <Button onClick={onClick}>Start Fast</Button>
+      <Button onClick={onClick}>快速开始</Button>
       <div ref={ref} style={{ marginTop: 16, minHeight: 24 }}></div>
     </ExampleCard>
   );

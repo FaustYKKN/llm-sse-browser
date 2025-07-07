@@ -12,10 +12,10 @@ export default function ExampleCard({ children, code, language = 'typescript', d
       {children}
       <div style={{ textAlign: 'right', marginTop: 16 }}>
         <Button type="link" icon={<CodeOutlined />} onClick={() => setOpen(!open)}>
-          {open ? 'Hide code' : 'Show code'}
+          {open ? '隐藏代码' : '显示代码'}
         </Button>
         <Button type="link" icon={<CopyOutlined />} onClick={copy}>
-          Copy
+          复制
         </Button>
       </div>
       {open && (

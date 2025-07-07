@@ -38,7 +38,7 @@ export default function Quiz() {
 
   return (
     <>
-      <Typography.Title level={2}>Quiz</Typography.Title>
+      <Typography.Title level={2}>测验</Typography.Title>
       {questions.map(q => (
         <div key={q.id} style={{ marginBottom: 24 }}>
           <Typography.Paragraph>{`${q.id}. ${q.question}`}</Typography.Paragraph>
@@ -55,11 +55,11 @@ export default function Quiz() {
         </div>
       ))}
       <Button type="primary" onClick={submit} style={{ marginBottom: 16 }}>
-        Submit
+        提交
       </Button>
       {score !== null && (
         <Typography.Paragraph>
-          Your score: {score} / {questions.length}
+          你的得分: {score} / {questions.length}
         </Typography.Paragraph>
       )}
     </>
