@@ -7,7 +7,7 @@ const code = `import { Button, Space } from 'antd';
 import React, { useRef } from 'react';
 import { streamLLM, Typewriter } from '../../../../src/llmStream.js';
 
-export default function MultiCall({ dark = false }: { dark?: boolean }) {
+export default function MultiCall() {
   const ref1 = useRef<HTMLDivElement>(null);
   const ref2 = useRef<HTMLDivElement>(null);
 
@@ -37,7 +37,7 @@ export default function MultiCall({ dark = false }: { dark?: boolean }) {
 }
 `;
 
-export default function MultiCall({ dark = false }: { dark?: boolean }) {
+export default function MultiCall() {
   const ref1 = useRef<HTMLDivElement>(null);
   const ref2 = useRef<HTMLDivElement>(null);
 
@@ -55,7 +55,7 @@ export default function MultiCall({ dark = false }: { dark?: boolean }) {
   };
 
   return (
-    <ExampleCard code={code} language="tsx" dark={dark}>
+    <ExampleCard code={code} language="tsx">
       <Space>
         <Button onClick={() => run(ref1, 'First message streaming')}>调用 1</Button>
         <Button onClick={() => run(ref2, 'Second message streaming')}>调用 2</Button>
