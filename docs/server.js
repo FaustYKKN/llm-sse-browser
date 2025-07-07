@@ -21,6 +21,12 @@ async function start() {
       D TEXT,
       answer TEXT
     )`);
+    db.run(`CREATE TABLE IF NOT EXISTS results (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      score INTEGER,
+      total INTEGER
+    )`);
   });
 
   app.post('/chat', (req, res) => {
@@ -83,6 +89,21 @@ async function start() {
     db.run('DELETE FROM questions WHERE id=?', req.params.id, function (err) {
       if (err) return res.status(500).json({ error: err.message });
       res.json({ ok: true });
+    });
+  });
+
+  app.get('/api/results', (req, res) => {
+    db.all('SELECT * FROM results ORDER BY id DESC', (err, rows) => {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json(rows);
+    });
+  });
+
+  app.post('/api/results', (req, res) => {
+    const { score, total } = req.body;
+    db.run('INSERT INTO results(score,total) VALUES(?,?)', [score, total], function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json({ ok: true, id: this.lastID });
     });
   });
 
