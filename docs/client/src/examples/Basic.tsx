@@ -25,7 +25,7 @@ export default function Basic({ dark = false }: { dark?: boolean }) {
 
   return (
     <>
-      <Button type="primary" onClick={onClick}>Start</Button>
+      <Button type="primary" onClick={onClick}>开始</Button>
       <div ref={ref} style={{ marginTop: 16, minHeight: 24 }}></div>
     </>
   );
@@ -50,7 +50,7 @@ export default function Basic({ dark = false }: { dark?: boolean }) {
 
   return (
     <ExampleCard code={code} language="tsx" dark={dark}>
-      <Button type="primary" onClick={onClick}>Start</Button>
+      <Button type="primary" onClick={onClick}>开始</Button>
       <div ref={ref} style={{ marginTop: 16, minHeight: 24 }}></div>
     </ExampleCard>
   );
