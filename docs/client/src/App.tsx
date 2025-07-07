@@ -46,7 +46,9 @@ function Shell() {
               {isHome ? (
                 <Home />
               ) : (
-                <Card style={{ background: token.colorBgContainer }}>
+                <>
+                  {/* Use light background for content pages */}
+                  <Card style={{ background: '#fff', color: '#000' }}>
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/examples" element={<Examples />} />
@@ -54,6 +56,7 @@ function Shell() {
                     <Route path="/bank" element={<QuestionBank />} />
                   </Routes>
                   </Card>
+                </>
               )}
             </Content>
           </Layout>
