@@ -53,7 +53,7 @@ function Shell() {
                     <Route path="/quiz" element={<Quiz />} />
                     <Route path="/bank" element={<QuestionBank />} />
                   </Routes>
-                </Card>
+                  </Card>
               )}
             </Content>
           </Layout>
