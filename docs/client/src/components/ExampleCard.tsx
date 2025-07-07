@@ -11,9 +11,7 @@ export default function ExampleCard({ children, code, language = 'typescript' }:
   const { token } = theme.useToken();
 
   return (
-    <>
-      {/* Light background for readability */}
-      <Card style={{ marginBottom: 24, background: '#f5f5f5', color: '#000' }}>
+    <Card style={{ marginBottom: 24, background: token.colorBgContainer }}>
       {children}
       <div style={{ textAlign: 'right', marginTop: 16 }}>
         <Button type="link" icon={<CodeOutlined />} onClick={() => setOpen(!open)}>
@@ -34,7 +32,6 @@ export default function ExampleCard({ children, code, language = 'typescript' }:
           />
         </div>
       )}
-      </Card>
-    </>
+    </Card>
   );
 }
