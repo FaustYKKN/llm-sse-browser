@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, Button } from 'antd';
 import { CopyOutlined, CodeOutlined } from '@ant-design/icons';
 import Editor from '@monaco-editor/react';
+import 'monaco-editor/min/vs/editor/editor.main.css';
 import { theme } from 'antd';
 
 export default function ExampleCard({ children, code, language = 'typescript', dark = false }: { children: React.ReactNode; code: string; language?: string; dark?: boolean }) {
