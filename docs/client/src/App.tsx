@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Examples from './pages/Examples';
 import Quiz from './pages/Quiz';
 import QuestionBank from './pages/QuestionBank';
+import Results from './pages/Results';
 
 const { Header, Sider, Content } = Layout;
 
@@ -36,7 +37,8 @@ function Shell() {
                   { label: '主页', key: '/' },
                   { label: '示例', key: '/examples' },
                   { label: '测验', key: '/quiz' },
-                  { label: '题库', key: '/bank' }
+                  { label: '题库', key: '/bank' },
+                  { label: '记录', key: '/results' }
                 ]}
               />
             </Sider>
@@ -52,9 +54,10 @@ function Shell() {
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/examples" element={<Examples />} />
-                    <Route path="/quiz" element={<Quiz />} />
-                    <Route path="/bank" element={<QuestionBank />} />
-                  </Routes>
+                  <Route path="/quiz" element={<Quiz />} />
+                  <Route path="/bank" element={<QuestionBank />} />
+                  <Route path="/results" element={<Results />} />
+                </Routes>
                   </Card>
                 </>
               )}

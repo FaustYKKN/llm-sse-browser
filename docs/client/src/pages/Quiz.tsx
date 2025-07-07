@@ -34,6 +34,11 @@ export default function Quiz() {
       if (answers[q.id] === q.answer) sc++;
     });
     setScore(sc);
+    fetch('/api/results', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ score: sc, total: questions.length })
+    });
   };
 
   return (
