@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Typography, Radio, Button } from 'antd';
-import { basePath } from '../config';
+import { apiBasePath } from '../config';
 
 interface Question {
   id: number;
@@ -15,7 +15,7 @@ export default function Quiz() {
   const [score, setScore] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch(`${basePath}/api/questions`)
+    fetch(`${apiBasePath}/questions`)
       .then(res => res.json())
       .then(rows =>
         setQuestions(
@@ -35,7 +35,7 @@ export default function Quiz() {
       if (answers[q.id] === q.answer) sc++;
     });
     setScore(sc);
-    fetch(`${basePath}/api/results`, {
+    fetch(`${apiBasePath}/results`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ score: sc, total: questions.length })
