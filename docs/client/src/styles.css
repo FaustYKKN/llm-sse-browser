@@ -1,0 +1,13 @@
+body {
+  color: #ffffff;
+}
+
+.ant-card-body {
+  background: #001529 !important;
+  color: #ffffff !important;
+}
+
+.ant-typography,
+.ant-typography * {
+  color: #ffffff !important;
+}
